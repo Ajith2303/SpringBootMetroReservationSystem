@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Chennai Metro Bookings</title>
+    <link rel="stylesheet" type="text/css" href="/css/style.css">
+</head>
+<body>
+    <h1>Chennai Metro Booking List</h1>
+
+    <a href="/showNewBookingForm">+ Add New Booking</a>
+    <br/><br/>
+     <!-- Flash Messages -->
+<div th:if="${successMessage}" class="alert success">
+    <p th:text="${successMessage}"></p>
+</div>
+
+<div th:if="${errorMessage}" class="alert error">
+    <p th:text="${errorMessage}"></p>
+</div>
+
+    <table border="1">
+        <tr>
+            <th>ID</th>
+            <th>Name</th>
+            <th>From</th>
+            <th>To</th>
+            <th>Price</th>
+            <th>Actions</th>
+        </tr>
+        <tr th:each="booking : ${listBookings}">
+            <td th:text="${booking.id}"></td>
+            <td th:text="${booking.name}"></td>
+            <td th:text="${booking.fromLocation}"></td>
+            <td th:text="${booking.toLocation}"></td>
+            <td th:text="${booking.price}"></td>
+            <td>
+                <a th:href="@{'/showFormForUpdate/' + ${booking.id}}">Edit</a> |
+                <a th:href="@{'/deleteBooking/' + ${booking.id}}">Delete</a>
+            </td>
+        </tr>
+    </table>
+</body>
+</html>

@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Update Booking</title>
+    <link rel="stylesheet" type="text/css" href="/css/update_booking.css">
+</head>
+<body>
+    <div class="container">
+        <h2>Update Booking</h2>
+        <form th:action="@{/saveBooking}" th:object="${booking}" method="post">
+            <input type="hidden" th:field="*{id}" />
+
+            <label>Name:</label>
+            <input type="text" th:field="*{name}" required />
+
+            <label>From:</label>
+            <select th:field="*{fromLocation}">
+                <option th:each="route : ${routes}" th:value="${route}" th:text="${route}"
+                    th:selected="${route == booking.fromLocation}"></option>
+            </select>
+
+            <label>To:</label>
+            <select th:field="*{toLocation}">
+                <option th:each="route : ${routes}" th:value="${route}" th:text="${route}"
+                    th:selected="${route == booking.toLocation}"></option>
+            </select>
+
+            <label>Price:</label>
+            <input type="number" th:field="*{price}" required />
+
+            <button type="submit">Update</button>
+        </form>
+        <a href="/">Back to Home</a>
+    </div>
+</body>
+</html>

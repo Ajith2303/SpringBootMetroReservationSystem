@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>New Booking</title>
+    <link rel="stylesheet" type="text/css" href="/css/new_booking.css">
+</head>
+<body>
+    <div class="container">
+        <h2>Add New Booking</h2>
+        <form th:action="@{/saveBooking}" th:object="${booking}" method="post">
+            <label>Name:</label>
+            <input type="text" th:field="*{name}" required />
+
+            <label>From:</label>
+            <select th:field="*{fromLocation}">
+                <option th:each="route : ${routes}" th:value="${route}" th:text="${route}"></option>
+            </select>
+
+            <label>To:</label>
+            <select th:field="*{toLocation}">
+                <option th:each="route : ${routes}" th:value="${route}" th:text="${route}"></option>
+            </select>
+
+            <label>Price:</label>
+            <input type="number" th:field="*{price}" required />
+
+            <button type="submit">Save</button>
+        </form>
+        <a href="/">Back to Home</a>
+    </div>
+</body>
+</html>

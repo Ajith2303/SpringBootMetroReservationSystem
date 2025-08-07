@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Error - Booking Not Found</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: #111;
+            color: white;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            overflow: hidden;
+        }
+
+        .error-container {
+            background-color: rgba(0, 0, 0, 0.75);
+            border: 2px solid #ff3b3b;
+            padding: 40px;
+            border-radius: 10px;
+            text-align: center;
+            box-shadow: 0 0 20px #ff3b3b;
+        }
+
+        .error-container h1 {
+            font-size: 36px;
+            color: #ff3b3b;
+            margin-bottom: 10px;
+        }
+
+        .error-container p {
+            font-size: 20px;
+            margin-bottom: 30px;
+        }
+
+        .error-container a {
+            color: #00d4ff;
+            text-decoration: none;
+            padding: 10px 20px;
+            border: 2px solid #00d4ff;
+            border-radius: 5px;
+            transition: 0.3s;
+        }
+
+        .error-container a:hover {
+            background-color: #00d4ff;
+            color: #000;
+        }
+    </style>
+</head>
+<body>
+    <div class="error-container">
+        <h1>Error</h1>
+        <p th:text="${errorMessage}">Something went wrong. Please try again.</p>
+        <a href="/" title="Back to Home">Go back to Home</a>
+    </div>
+</body>
+</html>
